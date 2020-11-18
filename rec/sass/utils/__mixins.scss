@@ -1,0 +1,20 @@
+// Breakpoints manager
+@mixin res($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 600px) {
+      @content;
+    }
+  } @else if $breakpoint == vtab {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == htab {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else if breakpoint == desktop {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  }
+}

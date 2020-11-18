@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Audio Recorder</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <main class="content">
+            <div class="container">
+                <button data-state="stop" class="btn" id="btn">
+                    <svg class="btn__icon">
+                        <use xlink:href="images/sprite.svg#icon-mic"></use>
+                    </svg>
+                </button>
+                <div class="clips">
+                    <audio class="clip" controls></audio>
+                </div>
+                
+            </div>
+        </main>
+        <script src="./js/main.js" async defer></script>
+    </body>
+</html>

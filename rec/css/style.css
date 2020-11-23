@@ -51,8 +51,8 @@ body {
   .btn__icon {
     width: 10rem;
     height: 10rem;
-    margin-left: 0.5rem;
-    background: none;
+    margin-left: -2rem;
+    margin-bottom: 1rem;
     fill: white; }
   .btn--active {
     background-color: #6ce987; }

@@ -24,6 +24,8 @@ function addNewRecord(box, src) {
     box.insertAdjacentHTML('beforeend',newRecord)
 }
 
+let chunks = [];
+
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     console.log('getUserMedia supported.');
     navigator.mediaDevices.getUserMedia (
@@ -33,25 +35,26 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
        .then(function(stream) {
             const mediaRecorder = new MediaRecorder(stream);
 
-            let chunks = [];
             mediaRecorder.ondataavailable = function(e) {
+                console.log('read')
                 chunks.push(e.data);
+            }
+
+            mediaRecorder.onstop = function(e) {
+                const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                chunks = [];
+                console.log(blob.size)
+                const audioURL = window.URL.createObjectURL(blob);
+                elements.clips.innerHTML = "";
+                addNewRecord(elements.clips, audioURL)
             }
 
             elements.btn.onclick = function() {
                 let state = getButtonState(elements.btn)
                 if(state === "play") {
                     mediaRecorder.start()
-                    console.log(mediaRecorder.state);
                 } else {
                     mediaRecorder.stop()
-                    console.log(mediaRecorder.state);
-
-                    const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' })
-                    chunks = [];
-                    const audioURL = window.URL.createObjectURL(blob);
-                    elements.clips.innerHTML = "";
-                    addNewRecord(elements.clips, audioURL)
                 }
             }
             

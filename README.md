@@ -34,4 +34,4 @@ User stories:
     - see the song details, play and record the song -> /songs/<id>
     - see ranking of user scores -> /ranking
     - go to user panel to change some settings eg. avatar, password -> /settings
-    - analyze the song -> /analyze
+    - analyze the song -> /analyze 

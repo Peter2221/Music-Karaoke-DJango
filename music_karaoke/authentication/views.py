@@ -16,3 +16,4 @@ def register(response):
         form = RegisterForm()
         profile_form = ProfileForm()
     return render(response, "registration/register.html", {"form":form, "profile_form":profile_form})
+

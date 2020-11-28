@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from authentication import views as views_auth
+from songs import views as views_song
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', views_auth.register, name="register"),
     path('', include("django.contrib.auth.urls")),
+    path('', views_song.index, name="index")
 ]

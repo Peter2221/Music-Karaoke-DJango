@@ -7,7 +7,7 @@
   <!-- LINK DO ARKUSZU STYLI -->
 </head>
 <body>
-  
+{% include 'layout/navbar.html' %}
 <main>
   <h1> Hello Music Karaoke DJango</h1>
   <h2> To jest główny plik base.html reszta go rozszerza </h2>
@@ -17,6 +17,8 @@
     {% endblock %}
   </div>
 </main>
-
+{% if user.is_authenticated%}
+{% include 'layout/footer.html' %}
+{% endif %}
 </body>
 </html>

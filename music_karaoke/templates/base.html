@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
+{% load sass_tags %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music Karaoke DJango</title>
   <!-- LINK DO ARKUSZU STYLI -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> 
+  <link href="{% sass_src 'sass/main.scss' %}" rel="stylesheet" type="text/css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   
 <main>
-  <h1> Hello Music Karaoke DJango</h1>
-  <h2> To jest główny plik base.html reszta go rozszerza </h2>
+  
   <div class="container">
+    <h1> Hello Music Karaoke DJango</h1>
+    <h2> To jest główny plik base.html reszta go rozszerza </h2>
     {% block content %}
       <!-- TUTAJ LECI ZAWARTOŚĆ INNYCH PLIKÓW -->
     {% endblock %}

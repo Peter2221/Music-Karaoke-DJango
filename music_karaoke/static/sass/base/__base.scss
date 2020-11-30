@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include res(htab) {
+    font-size: 55.5%;
+  }
+
+  @include res(vtab) {
+    font-size: 48.5%;
+  }
+
+  @include res(mobile) {
+    font-size: 41.5%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: $color-white;
+  text-align: center;
+}

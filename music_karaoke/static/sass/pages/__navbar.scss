@@ -1,0 +1,43 @@
+.navbar {
+  padding: 2rem;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .icon {
+    &--light {
+      fill: #fff;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+
+    &__item {
+      margin: 0 1rem;
+    }
+  }
+}
+

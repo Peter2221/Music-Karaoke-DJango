@@ -16,17 +16,10 @@
 <body>
 {% include 'layout/navbar.html' %}
 <main>
-  
-  <div class="container">
-    <h1> Hello Music Karaoke DJango</h1>
-    <h2> To jest główny plik base.html reszta go rozszerza </h2>
-    {% block content %}
-      <!-- TUTAJ LECI ZAWARTOŚĆ INNYCH PLIKÓW -->
-    {% endblock %}
-  </div>
+  {% block content %}
+    <!-- TUTAJ LECI ZAWARTOŚĆ INNYCH PLIKÓW -->
+  {% endblock %}
 </main>
-{% if user.is_authenticated %}
 {% include 'layout/footer.html' %}
-{% endif %}
 </body>
 </html>

@@ -8,23 +8,45 @@
 
 html {
   font-size: 62.5%;
+  .container {
+    width: 1000px;
+    margin: 0 auto;
+  }
 
   @include res(htab) {
     font-size: 55.5%;
+    .container {
+      width: 900px;
+      margin: 0 auto;
+    }
   }
 
   @include res(vtab) {
     font-size: 48.5%;
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
   }
 
   @include res(mobile) {
     font-size: 41.5%;
+    .container {
+      width: 300px;
+      margin: 0 auto;
+    }
   }
 }
 
 body {
   box-sizing: border-box;
   overflow-x: hidden;
-  background-color: $color-white;
-  text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
+
+
+
+
+
+
+

@@ -2,6 +2,22 @@
 
 {% block content %}
 
-<h1>Songs</h1>
- 
+<div class="container">
+  <h1>Songs</h1>
+
+  {% if songs %}
+    {% for song in songs %}
+      <div>
+        <h1>{{ song.title }}</h1>
+        <p>{{ song.genre }}</p>
+        <p>{{ song.artist }}</p>
+        <img src="{{ song.url }}" alt="">
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No songs available</p>
+  {% endif %}
+
+</div>
+
 {% endblock %}

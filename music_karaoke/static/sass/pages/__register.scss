@@ -1,23 +1,12 @@
-.container {
-    width: 100%;
-    height: 100vh;
+form {
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient($color-pri, $color-ter);
-    color: white;
 
-    form {
-        margin-top: 5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        input {
-            padding: 1rem 2rem;
-            margin-bottom: 2rem;
-        }
+    input {
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
     }
 }

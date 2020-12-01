@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'authentication.apps.AuthenticationConfig',
     'songs',
+    'authentication.apps.AuthenticationConfig',
+    'sass_processor'
 ]
 
 MIDDLEWARE = [
@@ -124,5 +126,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = "/"
-
 CRISPY_TEMPLATE_PACK="bootstrap4"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+#django SASS
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR,'static')
+LOGOUT_REDIRECT_URL = "/"

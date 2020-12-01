@@ -1,8 +1,9 @@
 form {
+    min-height: 90vh;
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     
@@ -41,14 +42,13 @@ form {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         width: 35%;
         padding: 0.5rem;
         color: #9e9d9d;
         font-size: 1.5rem;
 
         li{
-            list-style-type: circle;
             font-size: 1.4rem;
         }
     }
@@ -59,6 +59,7 @@ form {
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: 2rem;
         
         button[type=submit]{
             font-size: 180%;

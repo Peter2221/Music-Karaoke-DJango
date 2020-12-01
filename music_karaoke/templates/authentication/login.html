@@ -4,9 +4,18 @@
 
     <form method="POST">
         {% csrf_token %}
-        {{form}}
-        <button type="submit">Login</button>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" autocomplete="current-password" required id="id_password">
+        {{ form.non_field_errors }}
+        <div class="form-submit">
+            <button type="submit">Login</button>
+            <div class="new-account-link">
+                <a href="/register">Create new account!</a>
+            </div>
+        </div>
     </form>
-    <p><a href="/register">Create new account!</a></p>
+    
 
 {% endblock %}

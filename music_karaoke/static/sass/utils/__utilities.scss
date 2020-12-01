@@ -21,3 +21,35 @@
 .text-center {
   text-align: center;
 }
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-opacity {
+  opacity: 1;
+  &--80 {
+    opacity: 0.8;
+  }
+
+  &--60 {
+    opacity: 0.6;
+  }
+}
+
+.underline {
+  &--sec {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 50%;
+      background-color: $color-sec;
+      z-index: -1;
+    }
+  }
+}

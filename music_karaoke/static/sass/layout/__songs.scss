@@ -1,0 +1,85 @@
+.gallery {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5rem;
+
+  .item {
+      position: relative;
+      overflow: hidden;
+      width: 35rem;
+      height: 45rem;
+      border-radius: 8px;
+      color: white;
+      box-shadow: 0.3rem 0.3rem 1rem 0.3rem rgba(black, 0.2);
+      transition: all .3s ease-in;
+      margin: 2rem;
+      cursor: pointer;
+
+      &::after {
+          content: "SING";
+          display: block;
+          position: absolute;
+          top: -100%;
+          left: 50%;
+          width: 100%;
+          text-align: center;
+          height: auto;
+          font-size: 4rem;
+          font-weight: bold;
+          color: $color-sec;
+          background-color: rgba($color-ter, 0.7);
+          padding: 1rem 2rem;
+          transform: translate(-50%, -50%);
+          transition: all .2s ease-in-out;
+      }
+
+    &__description {
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 1;
+        transition: all .5s;
+        
+
+        & >* {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        filter: brightness(0.6);
+        transition: all .3s ease-in;
+        
+    }
+
+    &:hover .item__img {
+        filter: brightness(0.8);
+    }
+
+    &:hover .item__description {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &:hover {
+        transform: scale(1.02)
+    }
+
+    &:hover:after {
+        top: 50%;
+        
+    }
+  }
+}

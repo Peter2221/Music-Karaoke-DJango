@@ -4,3 +4,6 @@ pytz==2020.4
 sqlparse==0.4.1
 django-crispy-forms
 pillow
+libsass
+django-sass-processor
+django-compressor

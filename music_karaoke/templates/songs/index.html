@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
 <div class="gallery">
   {% if songs %}
     {% for song in songs %}
@@ -16,7 +18,10 @@
   {% else %}
     <p>No songs available</p>
   {% endif %}
-
 </div>
+{% else %}
+  <h1> Not authenticated </h1>
+{% endif %}
+
 
 {% endblock %}

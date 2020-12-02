@@ -15,5 +15,5 @@ def register(response):
     else:
         form = RegisterForm()
         profile_form = ProfileForm()
-    return render(response, "../templates/authentication/register.html", {"form":form, "profile_form":profile_form})
+    return render(response, "../templates/authentication/register.html", {"form": form, "profile_form": profile_form})
 

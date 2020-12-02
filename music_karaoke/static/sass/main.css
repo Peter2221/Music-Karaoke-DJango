@@ -245,7 +245,8 @@ form {
   text-transform: uppercase;
   background-color: #373b44;
   padding: 2rem;
-  color: #ececec; }
+  color: #ececec;
+  margin-top: 3rem; }
 
 .landing-page {
   width: 100%;

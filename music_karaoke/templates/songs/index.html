@@ -14,6 +14,9 @@
         </div>
         <img class="item__img" src="{{ song.url }}" alt="">
       </div>
+      <button class="btn btn--sec">
+        <a href="{% url 'songs:show_details' song.id %}">Brzydki link</a>
+      </button>
     {% endfor %}
   {% else %}
     <p>No songs available</p>

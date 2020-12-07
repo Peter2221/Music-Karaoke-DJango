@@ -1,34 +1,37 @@
 .navbar {
-  padding: 2rem;
+  padding: 2rem 10rem;
 
   .container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width:100%;
   }
 
   .logo-wrapper {
     display: flex;
     align-items: center;
+    font-family: 'Nova Mono', monospace;
   }
 
   .logo {
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    padding: 1rem;
-    background: black;
+    width: 6rem;
+    height: 6rem;
+    padding: 0.9rem;
+    border: solid 0.3rem $color-white;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 2rem;
   }
 
   .icon {
     &--light {
-      fill: #fff;
+      fill: $color-white;
     }
+    margin-left: -0.5rem;
   }
 
   .list {
@@ -37,6 +40,12 @@
 
     &__item {
       margin: 0 1rem;
+      color: $color-sec;
+
+      a {
+        color: $color-sec;
+      }
+      
     }
   }
 }

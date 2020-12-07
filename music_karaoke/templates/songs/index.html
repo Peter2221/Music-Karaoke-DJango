@@ -2,22 +2,29 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>Songs</h1>
-
+{% if user.is_authenticated %}
+<div class="gallery">
   {% if songs %}
     {% for song in songs %}
-      <div>
-        <h1>{{ song.title }}</h1>
-        <p>{{ song.genre }}</p>
-        <p>{{ song.artist }}</p>
-        <img src="{{ song.url }}" alt="">
+      <div class="item">
+        <div class="item__description">
+          <h1>{{ song.title }}</h1>
+          <p class="text-bold text-opacity--80">{{ song.genre }}</p>
+          <p>{{ song.artist }}</p>
+        </div>
+        <img class="item__img" src="{{ song.url }}" alt="">
       </div>
+      <button class="btn btn--sec">
+        <a href="{% url 'songs:show_details' song.id %}">Brzydki link</a>
+      </button>
     {% endfor %}
   {% else %}
     <p>No songs available</p>
   {% endif %}
-
 </div>
+{% else %}
+  <h1> Not authenticated </h1>
+{% endif %}
+
 
 {% endblock %}

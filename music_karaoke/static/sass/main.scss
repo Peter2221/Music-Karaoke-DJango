@@ -3,7 +3,12 @@
 @import './utils/_utilities';
 @import './base/_base';
 @import './base/_typography';
+@import './base/_animations';
+@import './components/_button';
 @import './pages/_register';
-@import './pages/_navbar';
+@import './layout/_navbar';
+@import './layout/_songs';
+@import './layout/_footer';
+@import './pages/_landing-page';
 
 

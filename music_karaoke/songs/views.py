@@ -6,12 +6,13 @@ def landing(request):
 # Create your views here.
 def index(request):
     songs = [
-        {'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+        {'id': 1, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+        {'id': 2, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+        {'id': 3, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
     ]
     return render(request, 'songs/index.html', {'songs' : songs})
 
-def show_details(request, id):
-    pass
+def show_details(request, song_id):
+    song = {'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'}
+    return render(request, 'songs/details.html', {'song' : song})
 

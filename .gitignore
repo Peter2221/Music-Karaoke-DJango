@@ -1,4 +1,5 @@
 .vscode
+*.pyc
 
 # Ignore rec modules
 /rec/node_modules

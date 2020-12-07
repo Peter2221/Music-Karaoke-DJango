@@ -3,15 +3,13 @@
 {% block content %}
     <form method='POST' action='' enctype='multipart/form-data'>
         {% csrf_token %}
-
         {{form}}
         {{profile_form}}
         <div class="form-submit">
             <button type="submit">Register</button>
             <div class="new-account-link">
-                <a href="/Login">You have an account? Login!</a>
+                <a href="{% url 'login' %}">You have an account? Login!</a>
             </div>
         </div>
     </form>
- 
 {% endblock %}

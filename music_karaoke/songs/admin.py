@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from .models import Song
-from .models import UserFavouriteSong
-from .models import Ranking
+from authentication.models import UserFavouriteSong
+from authentication.models import Ranking
 
 
 admin.site.register(Song)

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method='POST' action='' enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form}}
+        <div class="form-submit">
+            <button type="submit">Add Song</button>
+        </div>
+    </form>
+{% endblock %}

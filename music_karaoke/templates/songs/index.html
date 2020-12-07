@@ -12,7 +12,7 @@
           <p class="text-bold text-opacity--80">{{ song.genre }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <img class="item__img" src="{{ song.url }}" alt="">
+        <img class="item__img" src="{{MEDIA_URL}}{{song.song_image}}" alt="">
       </div>
       <button class="btn btn--sec">
         <a href="{% url 'songs:show_details' song.id %}">Brzydki link</a>

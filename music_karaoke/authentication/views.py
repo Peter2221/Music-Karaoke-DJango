@@ -10,6 +10,7 @@ def register(response):
             user = form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.profile_pic.name = '{}.jpg'.format(user.id)
             profile.save()
             return redirect("/")
     else:

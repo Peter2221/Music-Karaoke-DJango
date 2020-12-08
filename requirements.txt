@@ -7,3 +7,4 @@ pillow
 libsass
 django-sass-processor
 django-compressor
+gunicorn

@@ -12,8 +12,7 @@
           <p class="text-bold text-opacity--80">{{ song.genre }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <!-- <img class="item__img" src="{{MEDIA_URL}}{{song.song_image}}" alt=""> -->
-        <img class="item__img" src="https://cdn.pixabay.com/photo/2020/08/15/18/26/european-bee-eater-5491117_960_720.jpg" alt="">
+        <img class="item__img" src="{{MEDIA_URL}}{{song.song_image}}" alt="">
       </a>
     {% endfor %}
   {% else %}

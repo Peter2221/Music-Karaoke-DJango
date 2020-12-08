@@ -1,14 +1,14 @@
 elements = {
-    btn: document.getElementById("btn"),
+    btn: document.getElementById("player"),
     clips: document.querySelector(".clips")
 }
 
 elements.btn.addEventListener("click", ()=>{
-    if(!elements.btn.classList.contains('btn--active')) {
-        elements.btn.classList.add("btn--active");
+    if(!elements.btn.classList.contains('player--active')) {
+        elements.btn.classList.add("player--active");
         elements.btn.setAttribute("data-state","play");
     } else {
-        elements.btn.classList.remove("btn--active");
+        elements.btn.classList.remove("player--active");
         elements.btn.setAttribute("data-state","stop");
     }
 });

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a class="btn btn--sec" href="{% url 'songs:index' %}">Go back</a>
+
+{% if song %}
+<div class="container">  
+  <h1>{{ song.title }}</h1>
+  <p>{{ song.author }}</p>
+  <p>{{ song.genre }}</p>
+  <img src = "{{MEDIA_URL}}{{song.song_image}}">
+  <audio controls>
+    <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
+  </audio>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -10,10 +10,11 @@ def register(response):
             user = form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.profile_pic.name = '{}.jpg'.format(user.id)
             profile.save()
             return redirect("/")
     else:
         form = RegisterForm()
         profile_form = ProfileForm()
-    return render(response, "../templates/authentication/register.html", {"form":form, "profile_form":profile_form})
+    return render(response, "../templates/authentication/register.html", {"form": form, "profile_form": profile_form})
 

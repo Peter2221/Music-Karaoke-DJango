@@ -4,12 +4,8 @@
     <form method='POST' action='' enctype='multipart/form-data'>
         {% csrf_token %}
         {{form}}
-        {{profile_form}}
         <div class="form-submit">
-            <button type="submit">Register</button>
-            <div class="new-account-link">
-                <a href="{% url 'login' %}">You have an account? Login!</a>
-            </div>
+            <button type="submit">Add Song</button>
         </div>
     </form>
 {% endblock %}

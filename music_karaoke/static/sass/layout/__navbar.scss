@@ -41,6 +41,11 @@
     &__item {
       margin: 0 1rem;
       color: $color-sec;
+
+      a {
+        color: $color-sec;
+      }
+      
     }
   }
 }

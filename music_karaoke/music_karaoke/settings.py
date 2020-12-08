@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # 'crispy_forms',
     'authentication.apps.AuthenticationConfig',
     'songs',
-    'sass_processor'
+    # 'sass_processor'
 ]
 
 MIDDLEWARE = [
@@ -133,9 +133,9 @@ STATICFILES_DIRS = [
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
+    # 'sass_processor.finders.CssFinder',
 ]
 
 # django SASS
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+# SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
 LOGOUT_REDIRECT_URL = "/"

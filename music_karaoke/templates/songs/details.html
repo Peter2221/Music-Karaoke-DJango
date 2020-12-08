@@ -1,19 +1,33 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 <a class="btn btn--sec" href="{% url 'songs:index' %}">Go back</a>
 
 {% if song %}
-<div class="container">  
-  <h1>{{ song.title }}</h1>
-  <p>{{ song.author }}</p>
-  <p>{{ song.genre }}</p>
-  <img src = "{{MEDIA_URL}}{{song.song_image}}">
-  <audio controls>
-    <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
-  </audio>
-</div>
-{% endif %}
+<section class="songbox">
+  <div class="songbox__container">  
+    <h1>{{ song.title }}</h1>
+    <p>{{ song.author }}</p>
+    <p>{{ song.genre }}</p>
+    <!-- <img src = "{{MEDIA_URL}}{{song.song_image}}"> -->
 
+    <button id="player" class="player">
+      <svg class="player__icon">
+        <use xlink:href="../../static/images/sprite.svg#icon-bird2"></use>
+      </svg>
+    </button>
+
+    <div class="clips">
+      <audio class="audio" class="clip" controls></audio>
+    </div>
+
+    <!-- <audio controls>
+      <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
+    </audio> -->
+  </div>
+</section>
+
+{% load static %}  
+    <script src="{% static '/js/main.js' %}" type="text/javascript"></script>
+{% endif %}
 {% endblock %}

@@ -308,6 +308,47 @@ form {
   color: #ececec;
   margin-top: 3rem; }
 
+.songbox {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .songbox__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .songbox__container .audio:focus {
+      outline: none; }
+    .songbox__container .player {
+      width: 18rem;
+      height: 18rem;
+      background-color: #373b44;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0.3rem 0.3rem 0.8rem 0.5rem rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in;
+      border: none;
+      cursor: pointer;
+      margin: 3rem 0; }
+      .songbox__container .player:focus {
+        outline: none; }
+      .songbox__container .player:active {
+        outline: none; }
+      .songbox__container .player:hover {
+        transform: scale(1.02); }
+      .songbox__container .player__icon {
+        width: 10rem;
+        height: 10rem;
+        margin-left: -2rem;
+        margin-bottom: 1rem;
+        fill: white; }
+      .songbox__container .player--active {
+        background-color: #6ce987; }
+
 .landing-page {
   width: 100%;
   min-height: 100vh; }

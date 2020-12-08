@@ -1,0 +1,59 @@
+.songbox {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .audio {
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .player {
+      width: 18rem;
+      height: 18rem;
+      background-color: $color-ter;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0.3rem 0.3rem 0.8rem 0.5rem rgba(black, 0.2);
+      transition: all 0.2s ease-in;
+      border: none;
+      cursor: pointer;
+      margin: 3rem 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        outline: none;
+      }
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      &__icon {
+        width: 10rem;
+        height: 10rem;
+        margin-left: -2rem;
+        margin-bottom: 1rem;
+        fill: white;
+      }
+
+      &--active {
+        background-color: $color-sec;
+      }
+    }
+  }
+}

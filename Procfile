@@ -1,1 +1,1 @@
-web: gunicorn music_karaoke.music_karaoke.wsgi
+web: gunicorn music_karaoke.wsgi

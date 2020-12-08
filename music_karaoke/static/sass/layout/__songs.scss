@@ -7,7 +7,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 5rem;
-
+   
   .item {
       position: relative;
       overflow: hidden;
@@ -58,9 +58,10 @@
         z-index: 0;
         top: 0;
         width: 100%;
-        height: auto;
+        height: 100%;
         filter: brightness(0.6);
         transition: all .3s ease-in;
+        object-fit: cover;
         
     }
 

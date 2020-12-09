@@ -22,10 +22,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('register/', views_auth.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name='../templates/authentication/login.html')),
+    path('admin', admin.site.urls),
+    path('register', views_auth.register, name="register"),
+    path('login', auth_views.LoginView.as_view(template_name='../templates/authentication/login.html')),
     path('', include("django.contrib.auth.urls")),
     path('', views_song.landing, name="landing"),
-    path('songs/', include('songs.urls')),
+    path('songs', include('songs.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

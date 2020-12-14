@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a class="btn btn--sec" href="{% url 'songs:index' %}">Go back</a>
+<div class="container">
+  <a class="btn btn--sec" href="{% url 'songs:index' %}">Go back</a>
+</div>
 
 {% if song %}
 <section class="songbox">
@@ -9,7 +11,7 @@
     <h1>{{ song.title }}</h1>
     <p>{{ song.author }}</p>
     <p>{{ song.genre }}</p>
-    <!-- <img src = "{{MEDIA_URL}}{{song.song_image}}"> -->
+    <img src = "{{MEDIA_URL}}{{song.song_image}}">
 
     <button id="player" class="player">
       <svg class="player__icon">
@@ -21,9 +23,9 @@
       <audio class="audio" class="clip" controls></audio>
     </div>
 
-    <!-- <audio controls>
+    <audio controls>
       <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
-    </audio> -->
+    </audio>
   </div>
 </section>
 

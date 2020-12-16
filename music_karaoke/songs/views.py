@@ -8,13 +8,13 @@ def landing(request):
 
 # Create your views here.
 def index(request):
-    '''
-    songs = [
-        {'id': 1, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 2, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 3, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-    ]
-    '''
+    
+    # songs = [
+    #     {'id': 1, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+    #     {'id': 2, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+    #     {'id': 3, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
+    # ]
+    
     songs = Song.objects.all()
     return render(request, 'songs/index.html', {'songs' : songs})
 

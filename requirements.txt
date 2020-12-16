@@ -27,5 +27,4 @@ pytz==2020.4
 sqlparse==0.4.1
 libsass
 django-sass-processor
-django-compressor
 gunicorn

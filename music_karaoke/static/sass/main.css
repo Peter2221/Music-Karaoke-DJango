@@ -212,6 +212,8 @@ form {
     display: flex;
     align-items: center;
     font-family: 'Nova Mono', monospace; }
+    .navbar .logo-wrapper a {
+      color: #ececec; }
   .navbar .logo {
     border-radius: 50%;
     width: 6rem;
@@ -286,9 +288,10 @@ form {
       z-index: 0;
       top: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
       filter: brightness(0.6);
-      transition: all .3s ease-in; }
+      transition: all .3s ease-in;
+      object-fit: cover; }
     .gallery .item:hover .item__img {
       filter: brightness(0.8); }
     .gallery .item:hover .item__description {

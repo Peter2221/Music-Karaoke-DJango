@@ -4,10 +4,9 @@
 # Ignore rec modules
 /rec/node_modules
 
-music_karaoke/music_karaoke/__pycache__
-music_karaoke/authentication/__pycache__
+music_karaoke/music_karaoke/__pycache__/
+music_karaoke/authentication/__pycache__/
 
-music_karaoke/authentication/migrations
-music_karaoke/songs/migrations
+**/migrations/
 
-music_karaoke/db.sqlite3
+**/db.sqlite3

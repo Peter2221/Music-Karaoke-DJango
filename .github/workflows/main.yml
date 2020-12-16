@@ -20,7 +20,7 @@ jobs:
         python music_karaoke/manage.py makemigrations
         python music_karaoke/manage.py migrate
     - name: run tests
-      run:
+      run: |
         cd music_karaoke
         python manage.py test
         cd ..

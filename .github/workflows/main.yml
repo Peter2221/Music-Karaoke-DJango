@@ -21,5 +21,4 @@ jobs:
         python music_karaoke/manage.py migrate
     - name: run tests
       run: |
-        python music_karaoke/manage.py test authentication
-        python music_karaoke/manage.py test songs
+        python music_karaoke/manage.py test

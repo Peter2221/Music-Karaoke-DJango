@@ -25,7 +25,11 @@ SECRET_KEY = 'h$naq+r6^$9u*-$e%hkr9p2+e(^e(%&3)imr4=*0g^6@umk-#-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['voice-puscik3.herokuapp.com', '127.0.0.1']
+
+#ALLOWED_HOSTS = ['voice-puscik3.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['puscikmastertest.herokuapp.com', '127.0.0.1']
+
+
 
 # Application definition
 
@@ -138,6 +142,7 @@ STATICFILES_FINDERS = [
 
 # django SASS
 # SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
 LOGOUT_REDIRECT_URL = "/"
 
 # Activate Django-Heroku.

@@ -8,5 +8,5 @@ music_karaoke/music_karaoke/__pycache__/
 music_karaoke/authentication/__pycache__/
 
 **/migrations/
-
+**/__pycache__/
 **/db.sqlite3

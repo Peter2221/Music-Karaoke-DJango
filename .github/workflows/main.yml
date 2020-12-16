@@ -20,4 +20,4 @@ jobs:
         python music_karaoke/manage.py makemigrations
         python music_karaoke/manage.py migrate
     - name: run tests
-      run: python music_karaoke/manage.py test
+      run: python manage.py test

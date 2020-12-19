@@ -130,6 +130,8 @@ MEDIA_URL = '/'
 
 # MEDIA_IMG_URL = '/media/song_images'
 LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/"
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]

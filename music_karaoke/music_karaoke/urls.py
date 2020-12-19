@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin', admin.site.urls),
     path('register', views_auth.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name='../templates/authentication/login.html'), name="login"),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name="login"),
+    path('login', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name="login"),
     path('', include("django.contrib.auth.urls")),
     path('', views_song.landing, name="landing"),
     path('songs', include('songs.urls')),

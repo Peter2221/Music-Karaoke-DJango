@@ -16,11 +16,11 @@ def index(request):
     ]
     '''
     songs = Song.objects.all()
-    return render(request, 'songs/index.html', {'songs' : songs})
+    return render(request, 'song_index.html', {'songs' : songs})
 
 def show_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    return render(request, 'songs/details.html', {'song' : song})
+    return render(request, 'details.html', {'song' : song})
 
 @permission_required('is_superuser', login_url='/')
 def add_new_song(request):
@@ -31,4 +31,4 @@ def add_new_song(request):
             return redirect("/")
     else:
         form = SongForm()
-    return render(request, "../templates/songs/add_song.html", {"form": form})
+    return render(request, "add_song.html", {"form": form})

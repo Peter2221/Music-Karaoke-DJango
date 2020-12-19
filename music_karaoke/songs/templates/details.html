@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="container">
-  <a class="btn btn--sec" href="{% url 'songs:index' %}">Go back</a>
-</div>
-
 {% if song %}
 <section class="songbox">
+  <a class="btn-close" href="{% url 'songs:index' %}"><p>X</p></a>
   <div class="songbox__container">  
-    <h1>{{ song.title }}</h1>
-    <p>{{ song.author }}</p>
-    <p>{{ song.genre }}</p>
-    <img src = "{{MEDIA_URL}}{{song.song_image}}">
-
-    <button id="player" class="player">
-      <svg class="player__icon">
-        <use xlink:href="../../static/images/sprite.svg#icon-bird2"></use>
-      </svg>
-    </button>
-
-    <div class="clips">
-      <audio class="audio" class="clip" controls></audio>
+    <div class="details">
+      <div class="details__description">
+        <h1>{{ song.title }}</h1>
+        <p>{{ song.author }}</p>
+        <p>{{ song.genre }}</p>
+      </div>
+      <img src = "{{MEDIA_URL}}{{song.song_image}}">
     </div>
-
-    <audio controls>
-      <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
-    </audio>
+  
+    <div class="rec">
+      <button id="player" class="player">
+        <svg class="player__icon">
+          <use xlink:href="../../static/images/sprite.svg#icon-bird2"></use>
+        </svg>
+      </button>
+    
+      <div class="clips">
+        <audio class="audio" class="clip" controls></audio>
+      </div>
+    
+      <audio class="inst-audio" controls>
+        <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
+      </audio>
+    </div>
   </div>
 </section>
 

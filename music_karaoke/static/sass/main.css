@@ -409,6 +409,9 @@ form {
 .landing-page {
   width: 100%;
   min-height: 100vh; }
+  @media (max-width: 1200px) {
+    .landing-page .box {
+      flex-direction: column !important; } }
   .landing-page .box {
     padding: 5rem;
     display: flex;

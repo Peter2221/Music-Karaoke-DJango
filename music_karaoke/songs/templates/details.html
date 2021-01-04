@@ -28,6 +28,9 @@
         <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
       </audio>
     </div>
+
+    <a class="btn" href="{% url 'songs:add_to_favourite' %}">Add to favourite</a>
+
   </div>
 </section>
 

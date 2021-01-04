@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'crispy_forms',
     'authentication.apps.AuthenticationConfig',
     'songs',
+    'analysis',
     'sass_processor'
 ]
 

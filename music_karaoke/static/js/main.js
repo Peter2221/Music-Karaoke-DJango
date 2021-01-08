@@ -1,15 +1,19 @@
 elements = {
     btn: document.getElementById("player"),
-    clips: document.querySelector(".clips")
+    clips: document.querySelector(".clips"),
+    instrumentalAudio: document.querySelector(".inst-audio"),
 }
 
 elements.btn.addEventListener("click", ()=>{
     if(!elements.btn.classList.contains('player--active')) {
         elements.btn.classList.add("player--active");
         elements.btn.setAttribute("data-state","play");
+        elements.instrumentalAudio.play();
     } else {
         elements.btn.classList.remove("player--active");
         elements.btn.setAttribute("data-state","stop");
+        elements.instrumentalAudio.pause();
+        elements.instrumentalAudio.currentTime = 0;
     }
 });
 

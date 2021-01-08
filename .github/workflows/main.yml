@@ -21,4 +21,4 @@ jobs:
         python music_karaoke/manage.py migrate
     - name: run tests
       working-directory: ./music_karaoke
-      run: python manage.py test
+      run: python manage.py test tests

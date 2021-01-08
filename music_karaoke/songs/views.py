@@ -8,19 +8,18 @@ def landing(request):
 
 # Create your views here.
 def index(request):
-    '''
-    songs = [
-        {'id': 1, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 2, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 3, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-    ]
-    '''
     songs = Song.objects.all()
-    return render(request, 'songs/index.html', {'songs' : songs})
+    return render(request, 'song_index.html', {'songs' : songs})
 
 def show_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    return render(request, 'songs/details.html', {'song' : song})
+    return render(request, 'details.html', {'song' : song})
+
+def add_song_to_favourites(request, song_id):
+    pass
+
+def show_ranking(request):
+    pass
 
 @permission_required('is_superuser', login_url='/')
 def add_new_song(request):
@@ -31,4 +30,4 @@ def add_new_song(request):
             return redirect("/")
     else:
         form = SongForm()
-    return render(request, "../templates/songs/add_song.html", {"form": form})
+    return render(request, "add_song.html", {"form": form})

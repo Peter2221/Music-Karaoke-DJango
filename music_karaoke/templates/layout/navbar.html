@@ -16,7 +16,7 @@
       {% if user.is_authenticated %}
         <li class="list__item"><a href="{% url 'songs:index' %}">Songs</a></li>
         <li class="list__item"><a href="">Ranking</a></li>
-        <li class="list__item"><a href="">Settings</a></li>
+        <li class="list__item"><a href="">Favourites</a></li>
         <li class="list__item"><a href="logout/">Logout</a></li>
       {% else %}
         <li class="list__item"><a href="{% url 'login' %}">Login</a></li>

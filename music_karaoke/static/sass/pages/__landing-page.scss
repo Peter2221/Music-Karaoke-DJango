@@ -2,6 +2,12 @@
     width: 100%;
     min-height: 100vh;
 
+    @include res(htab) {
+        .box {
+            flex-direction: column !important;
+        }
+    }
+
     .box {
         padding: 5rem;
         display: flex;

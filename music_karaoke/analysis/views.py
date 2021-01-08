@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+import wave
+from .forms import Audio_to_play_form
+from scipy.io import wavfile
+import numpy as np
 
 # class VoiceAnalyzer:
 #     def read_signal(self, path):
@@ -63,10 +68,34 @@ def save_score_to_db():
   pass
 
 # Create your views here.
+@csrf_exempt
 def analysis(request):
-  # Z bloba 1 plik
-  # + url
-  
+  if request.method == "POST":
 
-  save_score_to_db()
-  pass
+    print(request.FILES.get('audio_file'))
+
+    upload_file = request.FILES['audio_file']
+    print(upload_file.size)
+    print(type(upload_file))
+
+    # audio_test = wave.open('media/audio_files/ex.wav', 'wb')
+    # #nchannels = audio_test.getnchannels()
+    # nframes = audio_test.getnframes()
+    # width = audio_test.getsampwidth()
+    # framerate = audio_test.getframerate()
+
+    # #print(nchannels)
+    # print(nframes)
+    # print(width)
+    # print(framerate)
+    audio = wave.open('media/audio_files/test.wav', 'wb')
+    audio.setnchannels(1)
+    audio.setnframes(100)
+    audio.setsampwidth(1)
+    audio.setframerate(8000)
+    blob = upload_file.read()
+    audio.writeframes(blob)
+  return render(request, 'landing-page/landing.html')
+
+  #save_score_to_db()
+  #pass

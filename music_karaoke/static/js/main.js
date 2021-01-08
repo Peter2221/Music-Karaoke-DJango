@@ -28,6 +28,15 @@ function addNewRecord(box, src) {
     box.insertAdjacentHTML('beforeend',newRecord)
 }
 
+function sendBlob(blob,url) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true)
+    let fd = new FormData();
+    fd.append("audio_file", blob)
+    xhr.send(fd)
+    //xhr.send(null)
+}
+
 let chunks = [];
 
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -45,12 +54,23 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             }
 
             mediaRecorder.onstop = function(e) {
-                const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=0' });
                 chunks = [];
                 console.log(blob.size)
+                console.log(blob)
                 const audioURL = window.URL.createObjectURL(blob);
+
+                var a = document.createElement('a');
+                document.body.appendChild(a);
+                a.style = 'display: none';
+                a.href = audioURL;
+                a.download = 'test.wav';
+                a.click();
+                window.URL.revokeObjectURL(audioURL);
+
                 elements.clips.innerHTML = "";
                 addNewRecord(elements.clips, audioURL)
+                sendBlob(blob, "http://127.0.0.1:8000/analysis")
             }
 
             elements.btn.onclick = function() {

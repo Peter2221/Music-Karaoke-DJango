@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from scipy.io import wavfile
+# from scipy.io import wavfile
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from os import path

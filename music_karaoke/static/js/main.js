@@ -54,19 +54,11 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             }
 
             mediaRecorder.onstop = function(e) {
-                const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=0' });
+                let blob = new Blob(chunks, { type: 'audio/wav' });
                 chunks = [];
                 console.log(blob.size)
                 console.log(blob)
                 const audioURL = window.URL.createObjectURL(blob);
-
-                var a = document.createElement('a');
-                document.body.appendChild(a);
-                a.style = 'display: none';
-                a.href = audioURL;
-                a.download = 'test.wav';
-                a.click();
-                window.URL.revokeObjectURL(audioURL);
 
                 elements.clips.innerHTML = "";
                 addNewRecord(elements.clips, audioURL)

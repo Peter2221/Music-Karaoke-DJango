@@ -28,12 +28,17 @@ function addNewRecord(box, src) {
     box.insertAdjacentHTML('beforeend',newRecord)
 }
 
-function sendBlob(blob,url) {
+function getAudioTrackVocalUrl() {
+    return localStorage.getItem('audioFileVocal');
+}
+
+function sendBlob(blob, url) {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true)
+    xhr.open("POST", url, true);
     let fd = new FormData();
-    fd.append("audio_file", blob)
-    xhr.send(fd)
+    fd.append("audio_file_vocal", getAudioTrackVocalUrl());
+    fd.append("audio_file", blob);
+    xhr.send(fd);
     //xhr.send(null)
 }
 

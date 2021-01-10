@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
+from django.http import JsonResponse
 
 from os import path
 import subprocess
@@ -131,6 +132,5 @@ def analysis(request):
         voiceScoreCalculator = VoiceScoreCalculator()
         score = voiceScoreCalculator.get_score(
             audio_track_vocal_path, converted_file_path)
-        print(score)
 
-    return render(request, 'landing-page/landing.html')
+    return JsonResponse({'score': score})

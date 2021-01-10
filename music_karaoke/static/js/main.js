@@ -33,13 +33,15 @@ function getAudioTrackVocalUrl() {
 }
 
 function sendBlob(blob, url) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
     let fd = new FormData();
     fd.append("audio_file_vocal", getAudioTrackVocalUrl());
     fd.append("audio_file", blob);
-    xhr.send(fd);
-    //xhr.send(null)
+    fetch(url, {
+        method: 'post',
+        body: fd
+    })
+    .then(data => data.json())
+    .then(score => console.log(score));
 }
 
 let chunks = [];

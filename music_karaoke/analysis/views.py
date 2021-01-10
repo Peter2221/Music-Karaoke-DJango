@@ -5,6 +5,7 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from os import path
 from django.conf import settings
+import subprocess
 
 # class VoiceAnalyzer:
 #     def read_signal(self, path):
@@ -76,6 +77,14 @@ def join_path_with_base_dir(base_dir, filepath):
     return path.join(base_dir, filepath)
 
 
+def convert_to_wav(filepath):
+    # remove .webm
+    output_path = filepath[:-5] + '.wav'
+    command = ['ffmpeg', '-i', filepath, output_path]
+    subprocess.run(command)
+    return output_path
+
+
 @csrf_exempt
 def analysis(request):
     if request.method == "POST":
@@ -84,13 +93,23 @@ def analysis(request):
         upload_file_path = default_storage.save(
             'media/audio_analysis/audio' + '.webm', ContentFile(upload_file.read()))
 
+        # Get base directory path, in this case it's main project folder
         BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
 
+        # Joining with paths for upload_file_path and audio_track_vocal_path
         audio_track_vocal_path = join_path_with_base_dir(
             BASE_DIR, audio_track_vocal_path)
         upload_file_path = join_path_with_base_dir(BASE_DIR, upload_file_path)
 
-        fs, y = wavfile.read(audio_track_vocal_path)
+        # fs, y = wavfile.read(audio_track_vocal_path)
+        # print(fs)
+        # print(y)
+
+        # upload_file_path = upload_file_path.replace('/', '\\')
+
+        converted_file_wav = convert_to_wav(upload_file_path)
+
+        fs, y = wavfile.read(converted_file_wav)
         print(fs)
         print(y)
 

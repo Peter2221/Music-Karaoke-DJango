@@ -29,6 +29,7 @@ urlpatterns = [
     path('login', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name="login"),
     path('', include("django.contrib.auth.urls")),
     path('', views_song.landing, name="landing"),
+    path('', include("authentication.urls")),
     path('songs', include('songs.urls')),
     path('analysis', include('analysis.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

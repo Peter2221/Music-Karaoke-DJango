@@ -12,7 +12,8 @@
                             <div class="h4 card-body">
                                 <div class="row ml-auto">
                                     <div class="col-lg-4 align-self-center ">
-                                        <a href="{{ rank.song.id }}" style="text-decoration: none; color:inherit">
+                                        <a href="{% url 'songs:index' %}/{{ rank.song.id }}"
+                                           style="text-decoration: none; color:inherit">
                                             <div class="d-flex flex-row bd-highlight float-left">
                                                 <div>{{ rank.position_count }}.</div>
                                                 <img src="../{{ rank.song.song_image }}" class="img-fluid"

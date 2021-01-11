@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import SongForm
 from .models import Song
-from authentication.models import Ranking, Profile
 
 
 def landing(request):
@@ -22,26 +21,6 @@ def show_details(request, song_id):
 
 def add_song_to_favourites(request, song_id):
     pass
-
-
-def show_ranking(request):
-    ranking = Ranking.objects.order_by('score').reverse().all()
-    position_count = 0
-    for rank in ranking:
-        rank = fill_ranking_object(rank)
-        position_count += 1
-        rank.position_count = position_count
-    return render(request, 'ranking.html', {'ranking': ranking})
-
-
-def fill_ranking_object(rank):
-    profile = rank.profile
-    user = profile.user
-    rank.profile_pic = profile.profile_pic
-    rank.first_name = user.first_name
-    rank.last_name = user.last_name
-    rank.song = rank.song
-    return rank
 
 
 @permission_required('is_superuser', login_url='/')

@@ -11,6 +11,4 @@ urlpatterns = [
     path('/AddSong', views.add_new_song, name="add_new_song"),
     # songs/add_to_favourite
     path('/add_to_favourite', views.add_song_to_favourites, name="add_to_favourite"),
-    # ranking
-    path('/ranking', views.show_ranking, name="ranking")
 ]

@@ -11,16 +11,17 @@
                         <div class="card lg-12">
                             <div class="h4 card-body">
                                 <div class="row ml-auto">
-                                    <div class="col-lg-4">
-                                        <div class="d-flex flex-row bd-highlight float-left">
-                                            <div class="p-2">{{ rank.position_count }}.</div>
-                                            <img src="../{{ rank.song.song_image }}" class="img-fluid"
-                                                 alt="song image" width="50px" height="50px">
-                                            <div class="p-2">{{ rank.song.author }} - {{ rank.song.title }}</div>
-                                        </div>
+                                    <div class="col-lg-4 align-self-center ">
+                                        <a href="{{ rank.song.id }}" style="text-decoration: none; color:inherit">
+                                            <div class="d-flex flex-row bd-highlight float-left">
+                                                <div>{{ rank.position_count }}.</div>
+                                                <img src="../{{ rank.song.song_image }}" class="img-fluid"
+                                                     alt="song image" width="50px" height="50px">
+                                                <div>{{ rank.song.author }} - {{ rank.song.title }}</div>
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="col-lg-5">
-                                        {#                                        <div class="d-flex flex-row bd-highlight float-left">#}
                                         <div class="d-flex flex-row bd-highlight">
                                             <div class="container justify-content-center">
                                                 <div class="row justify-content-center">
@@ -29,7 +30,6 @@
                                                 </div>
                                                 <div class="h3 row justify-content-center">
                                                     <div class="p-2">{{ rank.first_name }} {{ rank.last_name }}</div>
-                                                    {#                                                    <div class="p-2">{{ rank.last_name }}</div>#}
                                                 </div>
                                             </div>
                                         </div>

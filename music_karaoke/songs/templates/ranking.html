@@ -2,15 +2,59 @@
 
 {% block content %}
 
-<div class="container">
-  <h1>Ranking</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Dignissimos error, quod autem laborum, tempore libero nulla 
-    fugit amet commodi rerum ducimus. Enim, ad, nobis ipsum animi 
-    nihil voluptatibus non laudantium vel nostrum voluptate saepe 
-    expedita necessitatibus quo voluptatem fugit nulla.
-  </p>
-</div>
+    <div class="container">
+        <div class="h1 page-header">Ranking</div>
+        {% if ranking %}
+            <div class="row">
+                {% for rank in ranking %}
+                    <div class="col-lg-12 m-auto">
+                        <div class="card lg-12">
+                            <div class="h4 card-body">
+                                <div class="row ml-auto">
+                                    <div class="col-lg-4">
+                                        <div class="d-flex flex-row bd-highlight float-left">
+                                            <div class="p-2">{{ rank.position_count }}.</div>
+                                            <img src="../{{ rank.song.song_image }}" class="img-fluid"
+                                                 alt="song image" width="50px" height="50px">
+                                            <div class="p-2">{{ rank.song.author }} - {{ rank.song.title }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        {#                                        <div class="d-flex flex-row bd-highlight float-left">#}
+                                        <div class="d-flex flex-row bd-highlight">
+                                            <div class="container justify-content-center">
+                                                <div class="row justify-content-center">
+                                                    <img src="../{{ rank.profile_pic }}" class="img-fluid"
+                                                         alt="user avatar" width="50px" height="50px">
+                                                </div>
+                                                <div class="h3 row justify-content-center">
+                                                    <div class="p-2">{{ rank.first_name }} {{ rank.last_name }}</div>
+                                                    {#                                                    <div class="p-2">{{ rank.last_name }}</div>#}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="d-flex flex-row bd-highlight">
+                                            <div class="container justify-content-center">
+                                                <div class="h3 row justify-content-center">
+                                                    <div class="p-2">{{ rank.score }}/100</div>
+                                                </div>
+                                                <div class="h5 row justify-content-center">
+                                                    <div class="p-2">{{ rank.datetime }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No data available</p>
+        {% endif %}
+    </div>
 
 {% endblock %}

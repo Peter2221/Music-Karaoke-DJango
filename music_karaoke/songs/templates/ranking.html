@@ -1,61 +1,38 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<div class="container">
+  <h1 class="ranking-title">Ranking</h1>
+  {% if ranking %}
+  <a class="btn-close" href="{% url 'songs:index' %}">
+    <p>X</p>
+  </a>
+  <div class="ranking-container">
+    <ul class="ranking-list">
+      {% for rank in ranking %}
+      <li class="list-item">
+        <h3 class="list-item__count">{{ rank.position_count }}.</h3>
+        <div class="list-item__author">
+          <img src="../{{ rank.song.song_image }}" alt="song image" />
+          <div>
+            <h4>{{ rank.song.author }}</h4>
+            <span>{{ rank.song.title }}</span>
+          </div>
+        </div>
+        <img src="../{{ rank.profile_pic }}" alt="user avatar" />
+        <div>{{ rank.first_name }} {{ rank.last_name }}</div>
+        <div class="list-item__details">
+          <span>{{ rank.score }}/100</span>
+          <span>{{ rank.datetime }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {% else %}
+    <p>No data available</p>
+    {% endif %}
+  </div>
 
-    <div class="container">
-        <div class="h1 page-header">Ranking</div>
-        {% if ranking %}
-            <div class="row">
-                {% for rank in ranking %}
-                    <div class="col-lg-12 m-auto">
-                        <div class="card lg-12">
-                            <div class="h4 card-body">
-                                <div class="row ml-auto">
-                                    <div class="col-lg-4 align-self-center ">
-                                        <a href="{% url 'songs:index' %}/{{ rank.song.id }}"
-                                           style="text-decoration: none; color:inherit">
-                                            <div class="d-flex flex-row bd-highlight float-left">
-                                                <div>{{ rank.position_count }}.</div>
-                                                <img src="../{{ rank.song.song_image }}" class="img-fluid"
-                                                     alt="song image" width="50px" height="50px">
-                                                <div>{{ rank.song.author }} - {{ rank.song.title }}</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="d-flex flex-row bd-highlight">
-                                            <div class="container justify-content-center">
-                                                <div class="row justify-content-center">
-                                                    <img src="../{{ rank.profile_pic }}" class="img-fluid"
-                                                         alt="user avatar" width="50px" height="50px">
-                                                </div>
-                                                <div class="h3 row justify-content-center">
-                                                    <div class="p-2">{{ rank.first_name }} {{ rank.last_name }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="d-flex flex-row bd-highlight">
-                                            <div class="container justify-content-center">
-                                                <div class="h3 row justify-content-center">
-                                                    <div class="p-2">{{ rank.score }}/100</div>
-                                                </div>
-                                                <div class="h5 row justify-content-center">
-                                                    <div class="p-2">{{ rank.datetime }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p>No data available</p>
-        {% endif %}
-    </div>
-
-{% endblock %}
+  {% endblock %}
+</div>

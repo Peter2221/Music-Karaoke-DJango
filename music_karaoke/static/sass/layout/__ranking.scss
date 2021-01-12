@@ -1,0 +1,45 @@
+.ranking-title {
+  margin: 3rem 0;
+}
+
+.ranking-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  margin: 1rem 0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  &__count {
+    width: 4rem;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  &__author {
+    min-width: 20rem;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  &__details {
+    margin-left: auto;
+    width: 35rem;
+    display: flex;
+    justify-content: space-around;
+  }
+}

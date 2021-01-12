@@ -5,25 +5,6 @@
   justify-content: center;
   align-items: center;
 
-  .btn-close {
-    position: absolute;
-    top: 12rem;
-    left: 6rem;
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $color-sec;
-    border-radius: 10rem;
-    text-decoration: none;
-    p {
-      font-size: 3rem;
-      font-weight: bold;
-      color: white;
-    }
-  }
-
   &__container {
     width: inherit;
     display: flex;
@@ -38,7 +19,7 @@
       border-radius: 8px;
       color: white;
       box-shadow: 0.3rem 0.3rem 1rem 0.3rem rgba(black, 0.2);
-      transition: all .3s ease-in;
+      transition: all 0.3s ease-in;
       margin: 2rem;
 
       &__description {
@@ -48,10 +29,10 @@
         transform: translateX(-50%);
         text-align: center;
         z-index: 1;
-        transition: all .5s;
+        transition: all 0.5s;
 
-        & >* {
-            margin-bottom: 0.5rem;
+        & > * {
+          margin-bottom: 0.5rem;
         }
       }
 
@@ -63,7 +44,7 @@
         width: 100%;
         height: 100%;
         filter: brightness(0.6);
-        transition: all .3s ease-in;
+        transition: all 0.3s ease-in;
         object-fit: cover;
       }
     }
@@ -98,19 +79,19 @@
         border: none;
         cursor: pointer;
         margin: 3rem 0;
-  
+
         &:focus {
           outline: none;
         }
-  
+
         &:active {
           outline: none;
         }
-  
+
         &:hover {
           transform: scale(1.02);
         }
-  
+
         &__icon {
           width: 10rem;
           height: 10rem;
@@ -118,7 +99,7 @@
           margin-bottom: 1rem;
           fill: white;
         }
-  
+
         &--active {
           background-color: $color-sec;
         }

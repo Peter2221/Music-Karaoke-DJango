@@ -1,27 +1,44 @@
 .btn {
-    transition: all 0.3s;
-    border-radius: 4rem;
-    border: none;
-    padding: 1rem 2rem;
+  transition: all 0.3s;
+  border-radius: 4rem;
+  border: none;
+  padding: 1rem 2rem;
 
-
-    &:focus {
-      outline: none;
-    }
-
-  
-    &--sec {
-      color: $color-ter;
-      background-color: $color-sec;
-    }
-  
-    &:hover {
-      transform: scale(1.02) translateY(-0.6rem);
-      box-shadow: 0 0 2rem 1rem rgba($color-ter, 0.2);
-    }
-  
-    &:active {
-      transform: translateY(0.3rem);
-      box-shadow: none;
-    }
+  &:focus {
+    outline: none;
   }
+
+  &--sec {
+    color: $color-ter;
+    background-color: $color-sec;
+  }
+
+  &:hover {
+    transform: scale(1.02) translateY(-0.6rem);
+    box-shadow: 0 0 2rem 1rem rgba($color-ter, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0.3rem);
+    box-shadow: none;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  top: 12rem;
+  left: 6rem;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-sec;
+  border-radius: 10rem;
+  text-decoration: none;
+  p {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+  }
+}

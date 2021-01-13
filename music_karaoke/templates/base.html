@@ -3,24 +3,24 @@
 {% load sass_tags %}
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Karaoke DJango</title>
-  <!-- LINK DO ARKUSZU STYLI -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  <link href="{% sass_src 'sass/main.scss' %}" rel="stylesheet" type="text/css" />
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Karaoke DJango</title>
+    <!-- LINK DO ARKUSZU STYLI -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="{% sass_src 'sass/main.scss' %}" rel="stylesheet" type="text/css"/>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 {% include 'layout/navbar.html' %}
 <main>
-  {% block content %}
-    <!-- TUTAJ LECI ZAWARTOŚĆ INNYCH PLIKÓW -->
-  {% endblock %}
+    {% block content %}
+        <!-- TUTAJ LECI ZAWARTOŚĆ INNYCH PLIKÓW -->
+    {% endblock %}
 </main>
 {% include 'layout/footer.html' %}
 </body>

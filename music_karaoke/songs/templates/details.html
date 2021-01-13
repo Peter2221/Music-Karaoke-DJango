@@ -1,44 +1,52 @@
-{% extends 'base.html' %}
-{% block content %}
-{% if song %}
+{% extends 'base.html' %} {% block content %} {% if song %}
+
+<script>
+  localStorage.removeItem('audioFileVocal');
+  localStorage.setItem(
+    'audioFileVocal',
+    '{{MEDIA_URL}}{{song.audio_file_vocal}}'
+  );
+</script>
+
 <section class="songbox">
   <a class="btn-close" href="{% url 'songs:index' %}"><p>X</p></a>
-  <div class="songbox__container">  
+  <div class="songbox__container">
     <div class="details">
       <div class="details__description">
         <h1>{{ song.title }}</h1>
         <p>{{ song.author }}</p>
         <p>{{ song.genre }}</p>
       </div>
-      <img src = "{{MEDIA_URL}}{{song.song_image}}">
+      <img src="{{MEDIA_URL}}{{song.song_image}}" />
     </div>
-  
+
     <div class="rec">
       <button id="player" class="player">
         <svg class="player__icon">
           <use xlink:href="../../static/images/sprite.svg#icon-bird2"></use>
         </svg>
       </button>
-    
+
       <div class="clips">
         <audio class="audio" class="clip" controls></audio>
       </div>
-    
+
       <audio class="inst-audio" controls>
-        <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg">
+        <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg" />
       </audio>
-
-      <a class="btn bg-primary" href="{% url 'songs:add_to_favourite' %}">
-        Add to favourite
-      </a>
+      {% if favourite == False %}
+        <a class='btn bg-primary' href="{% url 'songs:add_to_favourite' song.id %}">
+          Add to favourite
+        </a>
+      {% else %}
+        <a class='btn bg-primary' href="">
+          remove from favourites
+        </a>
+      {% endif %}
     </div>
-
-    
-
   </div>
 </section>
 
-{% load static %}  
-    <script src="{% static '/js/main.js' %}" type="text/javascript"></script>
-{% endif %}
-{% endblock %}
+{% load static %}
+<script src="{% static '/js/main.js' %}" type="text/javascript"></script>
+{% endif %} {% endblock %}

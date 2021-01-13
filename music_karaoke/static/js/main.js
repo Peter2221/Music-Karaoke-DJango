@@ -28,13 +28,26 @@ function addNewRecord(box, src) {
     box.insertAdjacentHTML('beforeend',newRecord)
 }
 
-function sendBlob(blob,url) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true)
+function getAudioTrackVocalUrl() {
+    return localStorage.getItem('audioFileVocal');
+}
+
+function getSongId() {
+    let currentUrl = window.location.href
+    return currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+}
+
+function sendBlob(blob, url) {
     let fd = new FormData();
-    fd.append("audio_file", blob)
-    xhr.send(fd)
-    //xhr.send(null)
+    fd.append("audio_file_vocal", getAudioTrackVocalUrl());
+    fd.append("audio_file", blob);
+    fd.append("song_id", getSongId())
+    fetch(url, {
+        method: 'post',
+        body: fd
+    })
+    .then(data => data.json())
+    .then(score => console.log(score));
 }
 
 let chunks = [];

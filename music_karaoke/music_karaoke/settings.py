@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'songs',
     'analysis',
+    'ranking',
     'sass_processor'
 ]
 

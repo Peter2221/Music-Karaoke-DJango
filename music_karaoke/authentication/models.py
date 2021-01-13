@@ -11,10 +11,3 @@ class Profile(models.Model):
 class UserFavouriteSong(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     song = models.ForeignKey(to=Song, on_delete=models.CASCADE)
-
-
-class Ranking(models.Model):
-    profile = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
-    song = models.ForeignKey(to=Song, on_delete=models.CASCADE)
-    score = models.IntegerField()
-    datetime = models.DateTimeField(auto_now_add=True)

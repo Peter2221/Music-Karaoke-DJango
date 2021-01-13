@@ -14,7 +14,8 @@ from scipy.signal import stft
 from scipy.fft import fft
 import numpy as np
 
-from authentication.models import Profile, Ranking
+from authentication.models import Profile
+from ranking.models import Ranking
 from songs.models import Song
 
 

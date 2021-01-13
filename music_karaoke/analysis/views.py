@@ -14,6 +14,9 @@ from scipy.signal import stft
 from scipy.fft import fft
 import numpy as np
 
+from authentication.models import Profile, Ranking
+from songs.models import Song
+
 
 class VoiceAnalyzer:
     def read_signal(self, path):
@@ -46,7 +49,7 @@ class VoiceAnalyzer:
         return freqs
 
     def trim_frequencies(self, freq, freq2):
-        if(len(freq) > len(freq2)):
+        if len(freq) > len(freq2):
             freq = freq[0:len(freq2)]
         else:
             freq2 = freq2[0:len(freq)]
@@ -79,24 +82,18 @@ class VoiceScoreCalculator:
     def get_score(self, path1, path2):
         mse = self.get_mse(path1, path2)
 
-        if(mse <= 1000):
+        if (mse <= 1000):
             return 100
-        elif(mse <= 10000):
+        elif (mse <= 10000):
             return 50
-        elif(mse <= 50000):
+        elif (mse <= 50000):
             return 25
         else:
             return 0
 
 
-def save_score_to_db():
-    # song_id, user_id, score
-
-    pass
-
-
 def join_path_with_base_dir(base_dir, filepath):
-    if(filepath[0] == '/'):
+    if filepath[0] == '/':
         filepath = filepath[1:]
     return path.join(base_dir, filepath)
 
@@ -111,6 +108,7 @@ def convert_to_wav(filepath):
 
 @csrf_exempt
 def analysis(request):
+    score = 0
     if request.method == "POST":
         audio_track_vocal_path = request.POST.get('audio_file_vocal')
         upload_file = request.FILES.get('audio_file')
@@ -133,4 +131,15 @@ def analysis(request):
         score = voiceScoreCalculator.get_score(
             audio_track_vocal_path, converted_file_path)
 
+        song_id = request.POST.get('song_id')
+        user_id = request.user.id
+        save_rank(user_id, song_id, score)
     return JsonResponse({'score': score})
+
+
+def save_rank(user_id, song_id, score):
+    rank = Ranking()
+    rank.profile = Profile.objects.get(id=user_id)
+    rank.song = Song.objects.get(id=song_id)
+    rank.score = score
+    rank.save()

@@ -32,10 +32,16 @@ function getAudioTrackVocalUrl() {
     return localStorage.getItem('audioFileVocal');
 }
 
+function getSongId() {
+    let currentUrl = window.location.href
+    return currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+}
+
 function sendBlob(blob, url) {
     let fd = new FormData();
     fd.append("audio_file_vocal", getAudioTrackVocalUrl());
     fd.append("audio_file", blob);
+    fd.append("song_id", getSongId())
     fetch(url, {
         method: 'post',
         body: fd

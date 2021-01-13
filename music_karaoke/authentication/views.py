@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, ProfileForm
-from .models import Ranking
-
 
 def register(request):
     if request.user.is_authenticated:

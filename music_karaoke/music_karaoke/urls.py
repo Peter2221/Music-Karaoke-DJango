@@ -19,6 +19,7 @@ from authentication import views as views_auth
 from django.contrib.auth import views as auth_views
 from songs import views as views_song
 from analysis import views as views_analysis
+from ranking import views as views_ranking
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -31,5 +32,6 @@ urlpatterns = [
     path('', views_song.landing, name="landing"),
     path('', include("authentication.urls")),
     path('songs', include('songs.urls')),
-    path('analysis', include('analysis.urls'))
+    path('analysis', include('analysis.urls')),
+    path('ranking', include('ranking.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

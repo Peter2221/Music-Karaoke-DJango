@@ -426,10 +426,11 @@ form {
   .list-item__count {
     width: 4rem; }
   .list-item img {
+    object-fit: cover;
     width: 50px;
     height: 50px; }
   .list-item__author {
-    min-width: 20rem;
+    min-width: 25rem;
     display: flex;
     align-items: center; }
     .list-item__author img {

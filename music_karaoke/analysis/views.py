@@ -41,6 +41,9 @@ class VoiceAnalyzer:
             y_fourier = y_fourier[0:int(chunk_size / 2)]
             # index of max -> freq, * fs / step to get proper values
             freq = np.argmax(abs(y_fourier)) * (fs / chunk_size)
+            # change freq == 0 to 1, beacause of logarithming later
+            if(freq == 0):
+                freq = 1
             freqs.append(freq)
 
         return freqs
@@ -50,6 +53,11 @@ class VoiceAnalyzer:
             freq = freq[0:len(freq2)]
         else:
             freq2 = freq2[0:len(freq)]
+        return freq, freq2
+
+    def log_frequencies(self, freq, freq2):
+        freq = np.log(freq)
+        freq2 = np.log(freq2)
         return freq, freq2
 
 
@@ -73,12 +81,12 @@ class VoiceScoreCalculator:
         freq2 = self.analyzer.get_frequencies(y2, fs2, self.CHUNK_SIZE)
 
         freq, freq2 = self.analyzer.trim_frequencies(freq, freq2)
+
         mse = np.square(np.subtract(freq, freq2)).mean()
         return mse
 
     def get_score(self, path1, path2):
         mse = self.get_mse(path1, path2)
-
         if(mse <= 1000):
             return 100
         elif(mse <= 10000):
@@ -87,12 +95,6 @@ class VoiceScoreCalculator:
             return 25
         else:
             return 0
-
-
-def save_score_to_db():
-    # song_id, user_id, score
-
-    pass
 
 
 def join_path_with_base_dir(base_dir, filepath):

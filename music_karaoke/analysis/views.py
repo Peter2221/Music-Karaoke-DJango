@@ -89,16 +89,16 @@ class VoiceScoreCalculator:
         mse = np.square(np.subtract(freq, freq2)).mean()
         return mse
 
+    def one_divided_by_x(self, x):
+        return 1/x
+
     def get_score(self, path1, path2):
         mse = self.get_mse(path1, path2)
-        if(mse <= 1000):
-            return 100
-        elif (mse <= 10000):
-            return 50
-        elif (mse <= 50000):
-            return 25
+        # Apply 1/x function and times by 10^6, else return big number
+        if(mse != 0):
+            return self.one_divided_by_x(mse) * np.power(10, 6)
         else:
-            return 0
+            return np.power(10, 6)
 
 
 def join_path_with_base_dir(base_dir, filepath):

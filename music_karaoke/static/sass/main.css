@@ -155,6 +155,17 @@ a {
     font-weight: bold;
     color: white; }
 
+.heart {
+  width: 4rem;
+  height: auto;
+  position: absolute;
+  top: -4rem;
+  right: 2rem; }
+  .heart--red {
+    fill: red; }
+  .heart--grey {
+    fill: grey; }
+
 form {
   min-height: 90vh;
   margin-top: 3rem;
@@ -395,7 +406,8 @@ form {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      position: relative; }
       .songbox__container .rec .inst-audio {
         visibility: hidden;
         display: none; }

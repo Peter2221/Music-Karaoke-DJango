@@ -64,6 +64,7 @@
 
       .inst-audio {
         visibility: hidden;
+        display: none;
       }
 
       .player {
@@ -102,6 +103,18 @@
 
         &--active {
           background-color: $color-sec;
+        }
+      }
+
+      .score {
+        padding: 2rem 4rem;
+        display: block;
+        &__points {
+          color: $color-sec;
+        }
+
+        &--inactive {
+          display: none;
         }
       }
     }

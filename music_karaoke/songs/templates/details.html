@@ -34,14 +34,20 @@
       <audio class="inst-audio" controls>
         <source src="{{MEDIA_URL}}{{song.audio_file}}" type="audio/mpeg" />
       </audio>
+
+      <div class="score">
+        <h1 class="score__points">0</h1>
+      </div>
+
       {% if favourite == False %}
-        <a class='btn bg-primary' href="{% url 'songs:add_to_favourite' song.id %}">
-          Add to favourite
-        </a>
+      <a
+        class="btn bg-primary"
+        href="{% url 'songs:add_to_favourite' song.id %}"
+      >
+        Add to favourite
+      </a>
       {% else %}
-        <a class='btn bg-primary' href="">
-          remove from favourites
-        </a>
+      <a class="btn bg-primary" href=""> remove from favourites </a>
       {% endif %}
     </div>
   </div>

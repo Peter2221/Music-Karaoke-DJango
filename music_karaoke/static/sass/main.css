@@ -115,6 +115,12 @@ a {
 .btn {
   font-size: 2rem; }
 
+.searchbar__field {
+  font-size: 2.5rem; }
+
+.score__points {
+  font-size: 5rem; }
+
 .btn {
   transition: all 0.3s;
   border-radius: 4rem;
@@ -271,11 +277,11 @@ form {
     border-radius: 8px;
     color: white;
     box-shadow: 0.3rem 0.3rem 1rem 0.3rem rgba(0, 0, 0, 0.2);
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
     margin: 2rem;
     cursor: pointer; }
     .gallery .item::after {
-      content: "SING";
+      content: 'SING';
       display: block;
       position: absolute;
       top: -100%;
@@ -289,7 +295,7 @@ form {
       background-color: rgba(55, 59, 68, 0.7);
       padding: 1rem 2rem;
       transform: translate(-50%, -50%);
-      transition: all .2s ease-in-out; }
+      transition: all 0.2s ease-in-out; }
     .gallery .item__description {
       position: absolute;
       bottom: 5rem;
@@ -297,7 +303,7 @@ form {
       transform: translateX(-50%);
       text-align: center;
       z-index: 1;
-      transition: all .5s; }
+      transition: all 0.5s; }
       .gallery .item__description > * {
         margin-bottom: 0.5rem; }
     .gallery .item__img {
@@ -307,7 +313,7 @@ form {
       width: 100%;
       height: 100%;
       filter: brightness(0.6);
-      transition: all .3s ease-in;
+      transition: all 0.3s ease-in;
       object-fit: cover; }
     .gallery .item:hover .item__img {
       filter: brightness(0.8); }
@@ -318,6 +324,19 @@ form {
       transform: scale(1.02); }
     .gallery .item:hover:after {
       top: 50%; }
+
+.searchbar {
+  width: 100%;
+  height: auto;
+  padding: 1rem; }
+  .searchbar__field {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: solid 0.3rem rgba(55, 59, 68, 0.5);
+    display: block;
+    margin: 0 auto; }
+    .searchbar__field:focus {
+      outline: none; }
 
 .footer {
   width: 100%;
@@ -378,7 +397,8 @@ form {
       justify-content: center;
       align-items: center; }
       .songbox__container .rec .inst-audio {
-        visibility: hidden; }
+        visibility: hidden;
+        display: none; }
       .songbox__container .rec .player {
         width: 18rem;
         height: 18rem;
@@ -406,6 +426,13 @@ form {
           fill: white; }
         .songbox__container .rec .player--active {
           background-color: #6ce987; }
+      .songbox__container .rec .score {
+        padding: 2rem 4rem;
+        display: block; }
+        .songbox__container .rec .score__points {
+          color: #6ce987; }
+        .songbox__container .rec .score--inactive {
+          display: none; }
 
 .ranking-title {
   margin: 3rem 0; }

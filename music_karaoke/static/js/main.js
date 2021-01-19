@@ -2,6 +2,8 @@ elements = {
     btn: document.getElementById("player"),
     clips: document.querySelector(".clips"),
     instrumentalAudio: document.querySelector(".inst-audio"),
+    score: document.querySelector(".score"),
+    scorePoints: document.querySelector(".score__points"),
 }
 
 elements.btn.addEventListener("click", ()=>{
@@ -16,6 +18,11 @@ elements.btn.addEventListener("click", ()=>{
         elements.instrumentalAudio.currentTime = 0;
     }
 });
+
+function changeScore(s) {
+    elements.score.classList.remove("score--inactive");
+    elements.scorePoints.innerHTML = s.score;
+}
 
 function getButtonState(button) {
     return button.getAttribute("data-state")
@@ -32,22 +39,16 @@ function getAudioTrackVocalUrl() {
     return localStorage.getItem('audioFileVocal');
 }
 
-function getSongId() {
-    let currentUrl = window.location.href
-    return currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
-}
-
 function sendBlob(blob, url) {
     let fd = new FormData();
     fd.append("audio_file_vocal", getAudioTrackVocalUrl());
     fd.append("audio_file", blob);
-    fd.append("song_id", getSongId())
     fetch(url, {
         method: 'post',
         body: fd
     })
     .then(data => data.json())
-    .then(score => console.log(score));
+    .then(score => changeScore(score));
 }
 
 let chunks = [];
@@ -62,15 +63,12 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             const mediaRecorder = new MediaRecorder(stream);
 
             mediaRecorder.ondataavailable = function(e) {
-                console.log('read')
                 chunks.push(e.data);
             }
 
             mediaRecorder.onstop = function(e) {
                 let blob = new Blob(chunks, { type: 'audio/wav' });
                 chunks = [];
-                console.log(blob.size)
-                console.log(blob)
                 const audioURL = window.URL.createObjectURL(blob);
 
                 elements.clips.innerHTML = "";

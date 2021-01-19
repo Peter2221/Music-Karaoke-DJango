@@ -34,7 +34,10 @@ def add_song_to_favourites(request, song_id):
     favourite_song.save()
     return redirect('../{}'.format(song_id))
 
-
+def remove_song_from_favourites(request, song_id):
+    song_to_delete = Song.objects.get(id=song_id)
+    UserFavouriteSong.objects.filter(song=song_to_delete).delete()
+    return redirect('../{}'.format(song_id))
 
 @permission_required('is_superuser', login_url='/')
 def add_new_song(request):

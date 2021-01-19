@@ -11,6 +11,8 @@ urlpatterns = [
     path('/AddSong', views.add_new_song, name="add_new_song"),
     # songs/<id>/add_to_favourite
     path('/<int:song_id>/add_to_favourite', views.add_song_to_favourites, name="add_to_favourite"),
+    # songs/<id>/remove_from_favourite
+    path('/<int:song_id>/remove_from_favourite', views.remove_song_from_favourites, name="remove_from_favourite"),
     # songs/favourites
     path('/favourites', views.show_favourites, name="show_favourites"),
 ]

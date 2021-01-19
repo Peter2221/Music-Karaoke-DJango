@@ -17,7 +17,7 @@ def index(request):
 
 def show_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    favourite = UserFavouriteSong.objects.filter(song = song).count()
+    favourite = UserFavouriteSong.objects.filter(song = song, user = request.user).count()
     return render(request, 'details.html', {'song': song, 'favourite':favourite})
 
 def show_favourites(request):
@@ -34,7 +34,10 @@ def add_song_to_favourites(request, song_id):
     favourite_song.save()
     return redirect('../{}'.format(song_id))
 
-
+def remove_song_from_favourites(request, song_id):
+    song_to_delete = Song.objects.get(id=song_id)
+    UserFavouriteSong.objects.filter(song=song_to_delete, user=request.user).delete()
+    return redirect('../{}'.format(song_id))
 
 @permission_required('is_superuser', login_url='/')
 def add_new_song(request):

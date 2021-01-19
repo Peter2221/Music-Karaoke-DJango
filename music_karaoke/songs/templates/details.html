@@ -47,7 +47,11 @@
         Add to favourite
       </a>
       {% else %}
-      <a class="btn bg-primary" href=""> remove from favourites </a>
+      <a 
+        class="btn bg-primary" href="{% url 'songs:remove_from_favourite' song.id %}"
+      > 
+        Remove from favourites 
+      </a>
       {% endif %}
     </div>
   </div>

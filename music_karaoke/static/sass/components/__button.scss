@@ -41,4 +41,22 @@
     font-weight: bold;
     color: white;
   }
+  
+}
+
+.heart {
+  width: 4rem;
+  height: auto;
+  position: absolute;
+  top: -4rem;
+  right: 2rem;
+
+
+  &--red{
+    fill: red;
+  }
+
+  &--grey{
+    fill: grey;
+  }
 }

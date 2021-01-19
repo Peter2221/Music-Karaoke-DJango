@@ -18,6 +18,25 @@
         <p>{{ song.genre }}</p>
       </div>
       <img src="{{MEDIA_URL}}{{song.song_image}}" />
+
+      {% if favourite == False %}
+      <a
+        href="{% url 'songs:add_to_favourite' song.id %}"
+      >
+        <svg class="heart heart--grey">
+          <use xlink:href="../../static/images/sprite.svg#icon-heart"></use>
+        </svg>
+      </a>
+      {% else %}
+      <a 
+        href="{% url 'songs:remove_from_favourite' song.id %}"
+      >
+        <svg class="heart heart--red">
+          <use xlink:href="../../static/images/sprite.svg#icon-heart"></use>
+        </svg>
+      </a>
+      {% endif %}
+
     </div>
 
     <div class="rec">
@@ -38,21 +57,6 @@
       <div class="score">
         <h1 class="score__points">0</h1>
       </div>
-
-      {% if favourite == False %}
-      <a
-        class="btn bg-primary"
-        href="{% url 'songs:add_to_favourite' song.id %}"
-      >
-        Add to favourite
-      </a>
-      {% else %}
-      <a 
-        class="btn bg-primary" href="{% url 'songs:remove_from_favourite' song.id %}"
-      > 
-        Remove from favourites 
-      </a>
-      {% endif %}
     </div>
   </div>
 </section>

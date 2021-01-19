@@ -45,6 +45,11 @@ class VoiceAnalyzer:
             y_fourier = y_fourier[0:int(chunk_size / 2)]
             # index of max -> freq, * fs / step to get proper values
             freq = np.argmax(abs(y_fourier)) * (fs / chunk_size)
+            # round to 2 decimal places
+            freq = round(freq, 2)
+            # change freq == 0 to 1, beacause of logarithming later
+            if(freq == 0):
+                freq = 1
             freqs.append(freq)
 
         return freqs
@@ -56,12 +61,25 @@ class VoiceAnalyzer:
             freq2 = freq2[0:len(freq)]
         return freq, freq2
 
+    def log_frequencies(self, freq, freq2):
+        freq = np.log(freq)
+        freq2 = np.log(freq2)
+        return freq, freq2
+
 
 class VoiceScoreCalculator:
     def __init__(self):
         self.CHUNK_SIZE = 4410
         self.LOW_CUT_FREQ = 600
         self.analyzer = VoiceAnalyzer()
+        self.freq = []
+        self.freq2 = []
+
+    def set_freq(self, freq):
+        self.freq = freq
+
+    def set_freq2(self, freq2):
+        self.freq2 = freq2
 
     def get_mse(self, path1, path2):
         fs, y = self.analyzer.read_signal(path1)
@@ -77,20 +95,34 @@ class VoiceScoreCalculator:
         freq2 = self.analyzer.get_frequencies(y2, fs2, self.CHUNK_SIZE)
 
         freq, freq2 = self.analyzer.trim_frequencies(freq, freq2)
+
+        # set freqs to object properties
+        self.set_freq(freq)
+        self.set_freq2(freq2)
+
         mse = np.square(np.subtract(freq, freq2)).mean()
         return mse
 
+    # Square function, change small to big, big to small values
+    def mse_processing_function(self, mse):
+        mse = mse - 50000
+        mse = mse / 1000
+        mse = np.power(mse, 2)
+        return mse
+
+    def get_frequencies(self):
+        return {'freq': self.freq, 'freq2': self.freq2}
+
     def get_score(self, path1, path2):
         mse = self.get_mse(path1, path2)
-
-        if (mse <= 1000):
-            return 100
-        elif (mse <= 10000):
-            return 50
-        elif (mse <= 50000):
-            return 25
-        else:
+        # print("MSE: " + str(mse))
+        # Apply function, else return big number
+        if(50000 > mse >= 0):
+            return self.mse_processing_function(mse)
+        elif(mse >= 50000):
             return 0
+        else:
+            return np.power(10, 6)
 
 
 def join_path_with_base_dir(base_dir, filepath):
@@ -132,10 +164,13 @@ def analysis(request):
         score = voiceScoreCalculator.get_score(
             audio_track_vocal_path, converted_file_path)
 
-        song_id = request.POST.get('song_id')
-        user_id = request.user.id
-        save_rank(user_id, song_id, score)
-    return JsonResponse({'score': score})
+        # Getting frequencies
+        freqs = voiceScoreCalculator.get_frequencies()
+
+        # song_id = request.POST.get('song_id')
+        # user_id = request.user.id
+        # save_rank(user_id, song_id, score)
+    return JsonResponse({'score': score, 'freqs': freqs})
 
 
 def save_rank(user_id, song_id, score):

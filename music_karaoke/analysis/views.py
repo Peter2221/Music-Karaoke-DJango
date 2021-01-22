@@ -108,6 +108,7 @@ class VoiceScoreCalculator:
         mse = mse - 50000
         mse = mse / 1000
         mse = np.power(mse, 2)
+        mse = round(mse)
         return mse
 
     def get_frequencies(self):

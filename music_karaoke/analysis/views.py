@@ -134,6 +134,7 @@ def join_path_with_base_dir(base_dir, filepath):
 
 def convert_to_wav(filepath):
     # remove .webm
+    print(filepath)
     output_path = filepath[:-5] + '.wav'
     command = ['ffmpeg', '-i', filepath, output_path]
     subprocess.run(command)
@@ -168,9 +169,9 @@ def analysis(request):
         # Getting frequencies
         freqs = voiceScoreCalculator.get_frequencies()
 
-        # song_id = request.POST.get('song_id')
-        # user_id = request.user.id
-        # save_rank(user_id, song_id, score)
+        song_id = request.POST.get('song_id')
+        user_id = request.user.id
+        save_rank(user_id, song_id, score)
     return JsonResponse({'score': score, 'freqs': freqs})
 
 

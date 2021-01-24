@@ -84,7 +84,7 @@ function saveScoreInRanking() {
     let fd = new FormData();
     fd.append("song_id", getSongId())
     fd.append("score", localStorage.getItem('score'))
-    fetch("http://127.0.0.1:8000/ranking/save", {
+    fetch('/ranking/save', {
         method: 'post',
         body: fd
     })
@@ -117,7 +117,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
                 elements.clips.innerHTML = "";
                 addNewRecord(elements.clips, audioURL)
-                sendBlob(blob, "http://127.0.0.1:8000/analysis")
+                sendBlob(blob, '/analysis')
             }
 
             elements.btn.onclick = function() {

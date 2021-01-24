@@ -8,6 +8,20 @@
   );
 </script>
 
+<div id="rankingModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="close">&times;</span>
+      <p>Do you want to save your score in ranking?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" onclick="closeRankingModal()">Close</button>
+      <button type="button" class="btn btn-primary" onclick="saveScoreInRanking()">Save</button>
+    </div>
+  </div>
+</div>
+
+
 <section class="songbox">
   <a class="btn-close" href="{% url 'songs:index' %}"><p>X</p></a>
   <div class="songbox__container">
@@ -28,7 +42,7 @@
         </svg>
       </a>
       {% else %}
-      <a 
+      <a
         href="{% url 'songs:remove_from_favourite' song.id %}"
       >
         <svg class="heart heart--red">

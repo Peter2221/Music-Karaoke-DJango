@@ -14,10 +14,6 @@ from scipy.signal import stft
 from scipy.fft import fft
 import numpy as np
 
-from authentication.models import Profile
-from ranking.models import Ranking
-from songs.models import Song
-
 
 class VoiceAnalyzer:
     def read_signal(self, path):
@@ -168,16 +164,4 @@ def analysis(request):
 
         # Getting frequencies
         freqs = voiceScoreCalculator.get_frequencies()
-
-        song_id = request.POST.get('song_id')
-        user_id = request.user.id
-        save_rank(user_id, song_id, score)
     return JsonResponse({'score': score, 'freqs': freqs})
-
-
-def save_rank(user_id, song_id, score):
-    rank = Ranking()
-    rank.profile = Profile.objects.get(id=user_id)
-    rank.song = Song.objects.get(id=song_id)
-    rank.score = score
-    rank.save()

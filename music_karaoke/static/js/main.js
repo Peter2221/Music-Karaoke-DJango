@@ -39,6 +39,11 @@ function getAudioTrackVocalUrl() {
     return localStorage.getItem('audioFileVocal');
 }
 
+function getSongId() {
+    let currentUrl = window.location.href
+    return currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+}
+
 function sendBlob(blob, url) {
     let fd = new FormData();
     fd.append("audio_file_vocal", getAudioTrackVocalUrl());
@@ -47,11 +52,50 @@ function sendBlob(blob, url) {
         method: 'post',
         body: fd
     })
-    .then(data => data.json())
-    .then(score => changeScore(score));
+        .then(data => data.json())
+        .then(response => {
+            changeScore(response);
+            localStorage.setItem('score', response.score.toString());
+        })
+        .then(() => openRankingModal());
 }
 
+function openRankingModal() {
+    rankingModal.style.display = "block";
+}
+
+function setRankingModalCloseTriggers() {
+    let span = rankingModal.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        closeRankingModal()
+    }
+    window.onclick = function (event) {
+        if (event.target === rankingModal) {
+            closeRankingModal()
+        }
+    }
+}
+
+function closeRankingModal() {
+    rankingModal.style.display = "none";
+}
+
+function saveScoreInRanking() {
+    let fd = new FormData();
+    fd.append("song_id", getSongId())
+    fd.append("score", localStorage.getItem('score'))
+    fetch("http://127.0.0.1:8000/ranking/save", {
+        method: 'post',
+        body: fd
+    })
+        .then(() => closeRankingModal());
+}
+
+
 let chunks = [];
+let rankingModal = document.getElementById("rankingModal");
+
+setRankingModalCloseTriggers()
 
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     console.log('getUserMedia supported.');
@@ -84,7 +128,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     mediaRecorder.stop()
                 }
             }
-            
+
        })
        .catch(function(err) {
           console.log('The following getUserMedia error occured: ' + err);

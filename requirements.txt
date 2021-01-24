@@ -24,3 +24,4 @@ WTForms==2.3.3
 python-dotenv==0.15.0
 dj_database_url
 whitenoise
+scipy==1.6.0

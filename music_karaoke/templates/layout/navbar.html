@@ -1,20 +1,30 @@
 <nav class="navbar bg-dark">
   <div class="container">
-
     <div class="logo-wrapper">
       <div class="logo">
         <svg class="icon icon--light">
           <use xlink:href="../../static/images/sprite.svg#icon-bird2"></use>
         </svg>
       </div>
-      <h1 class="lg-header">Music Karaoke DJ</h1>
+      <a href="{% url 'landing' %}">
+        <h1 class="lg-header">Music Karaoke DJ</h1>
+      </a>
     </div>
 
     <ul class="list">
+      {% if user.is_authenticated %}
       <li class="list__item"><a href="{% url 'songs:index' %}">Songs</a></li>
-      <li class="list__item"><a href="">Ranking</a></li>
-      <li class="list__item"><a href="">Settings</a></li>
+      <li class="list__item">
+        <a href="{% url 'ranking:index' %}">Ranking</a>
+      </li>
+      <li class="list__item">
+        <a href="{% url 'songs:show_favourites' %}">Favourites</a>
+      </li>
+      <li class="list__item"><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li class="list__item"><a href="{% url 'login' %}">Login</a></li>
+      <li class="list__item"><a href="{% url 'register' %}">Register</a></li>
+      {% endif %}
     </ul>
-    
   </div>
 </nav>

@@ -2,25 +2,42 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import SongForm
 from .models import Song
+from authentication.models import UserFavouriteSong
+
 
 def landing(request):
     return render(request, 'landing-page/landing.html')
 
+
 # Create your views here.
 def index(request):
-    '''
-    songs = [
-        {'id': 1, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 2, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-        {'id': 3, 'title': 'Boyfriend', 'artist': 'Justin Bieber', 'genre': 'pop', 'url': 'https://cdn.pixabay.com/photo/2020/11/25/14/37/portrait-5775938_960_720.jpg'},
-    ]
-    '''
     songs = Song.objects.all()
-    return render(request, 'songs/index.html', {'songs' : songs})
+    return render(request, 'song_index.html', {'songs': songs})
+
 
 def show_details(request, song_id):
     song = Song.objects.get(id=song_id)
-    return render(request, 'songs/details.html', {'song' : song})
+    favourite = UserFavouriteSong.objects.filter(song = song, user = request.user).count()
+    return render(request, 'details.html', {'song': song, 'favourite':favourite})
+
+def show_favourites(request):
+    songs = []
+    favourite_songs = UserFavouriteSong.objects.filter(user = request.user).values()
+    for favourite_song in favourite_songs:
+        songs.append(Song.objects.get(id=favourite_song['song_id']))
+    return render(request, 'song_index.html', {'songs' : songs})
+
+def add_song_to_favourites(request, song_id):
+    favourite_song = UserFavouriteSong()
+    favourite_song.user = request.user
+    favourite_song.song = Song.objects.get(id=song_id)
+    favourite_song.save()
+    return redirect('../{}'.format(song_id))
+
+def remove_song_from_favourites(request, song_id):
+    song_to_delete = Song.objects.get(id=song_id)
+    UserFavouriteSong.objects.filter(song=song_to_delete, user=request.user).delete()
+    return redirect('../{}'.format(song_id))
 
 @permission_required('is_superuser', login_url='/')
 def add_new_song(request):
@@ -31,4 +48,4 @@ def add_new_song(request):
             return redirect("/")
     else:
         form = SongForm()
-    return render(request, "../templates/songs/add_song.html", {"form": form})
+    return render(request, "add_song.html", {"form": form})

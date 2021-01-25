@@ -140,28 +140,29 @@ def convert_to_wav(filepath):
 @csrf_exempt
 def analysis(request):
     score = 0
-    if request.method == "POST":
-        audio_track_vocal_path = request.POST.get('audio_file_vocal')
-        upload_file = request.FILES.get('audio_file')
-        upload_file_path = default_storage.save(
-            'media/audio_analysis/audio' + '.webm', ContentFile(upload_file.read()))
-
-        # Get base directory path, in this case it's main project folder
-        BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
-
-        # Joining with paths for upload_file_path and audio_track_vocal_path
-        audio_track_vocal_path = join_path_with_base_dir(
-            BASE_DIR, audio_track_vocal_path)
-        upload_file_path = join_path_with_base_dir(BASE_DIR, upload_file_path)
-
-        # convert .webm file to .wav and save to the same dir
-        converted_file_path = convert_to_wav(upload_file_path)
-
-        # Getting score for source and user record
-        voiceScoreCalculator = VoiceScoreCalculator()
-        score = voiceScoreCalculator.get_score(
-            audio_track_vocal_path, converted_file_path)
-
-        # Getting frequencies
-        freqs = voiceScoreCalculator.get_frequencies()
+    freqs = 5
+    # if request.method == "POST":
+    #     audio_track_vocal_path = request.POST.get('audio_file_vocal')
+    #     upload_file = request.FILES.get('audio_file')
+    #     upload_file_path = default_storage.save(
+    #         'media/audio_analysis/audio' + '.webm', ContentFile(upload_file.read()))
+    #
+    #     # Get base directory path, in this case it's main project folder
+    #     BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
+    #
+    #     # Joining with paths for upload_file_path and audio_track_vocal_path
+    #     audio_track_vocal_path = join_path_with_base_dir(
+    #         BASE_DIR, audio_track_vocal_path)
+    #     upload_file_path = join_path_with_base_dir(BASE_DIR, upload_file_path)
+    #
+    #     # convert .webm file to .wav and save to the same dir
+    #     converted_file_path = convert_to_wav(upload_file_path)
+    #
+    #     # Getting score for source and user record
+    #     voiceScoreCalculator = VoiceScoreCalculator()
+    #     score = voiceScoreCalculator.get_score(
+    #         audio_track_vocal_path, converted_file_path)
+    #
+    #     # Getting frequencies
+    #     freqs = voiceScoreCalculator.get_frequencies()
     return JsonResponse({'score': score, 'freqs': freqs})

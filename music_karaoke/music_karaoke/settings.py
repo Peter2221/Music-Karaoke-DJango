@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'songs',
     'analysis',
     'ranking',
-    # 'sass_processor'
+    'sass_processor',
+    # 'sass_tags'
 ]
 
 MIDDLEWARE = [

@@ -57,11 +57,6 @@ class VoiceAnalyzer:
             freq2 = freq2[0:len(freq)]
         return freq, freq2
 
-    def log_frequencies(self, freq, freq2):
-        freq = np.log(freq)
-        freq2 = np.log(freq2)
-        return freq, freq2
-
 
 class VoiceScoreCalculator:
     def __init__(self):

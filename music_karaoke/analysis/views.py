@@ -114,12 +114,13 @@ class VoiceScoreCalculator:
         mse = self.get_mse(path1, path2)
         # print("MSE: " + str(mse))
         # Apply function, else return big number
-        if(50000 > mse >= 0):
-            return self.mse_processing_function(mse)
-        elif(mse >= 50000):
-            return 0
-        else:
-            return np.power(10, 6)
+        # if(50000 > mse >= 0):
+        #     return self.mse_processing_function(mse)
+        # elif(mse >= 50000):
+        #     return 0
+        # else:
+        #     return np.power(10, 6)
+        return mse
 
 
 def join_path_with_base_dir(base_dir, filepath):

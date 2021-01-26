@@ -1,13 +1,16 @@
 .vscode
 *.pyc
 
+/music_karaoke/htmlcov
+/music_karaoke/.coverage
+
 # Ignore rec modules
 /rec/node_modules
 
 music_karaoke/media
 
-music_karaoke/music_karaoke/__pycache__
-music_karaoke/authentication/__pycache__
+/music_karaoke/music_karaoke/__pycache__
+/music_karaoke/authentication/__pycache__
 
 **/migrations/
 **/__pycache__/

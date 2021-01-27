@@ -1,11 +1,40 @@
 from django.test import TestCase
+from django.urls import reverse
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth.models import User
+import os
+from django.conf import settings
+from .forms import RegisterForm, ProfileForm
 
-#tests need to start with word test like in test_login
-#example test to check github actions
+
 class UserTestCase(TestCase):
-    def test_login(self):
-        one = 1
-        also_one = 1
-        self.assertEqual(one,also_one)
+    def setUp(self):
+        self.register_url = reverse('register')
+        self.file_photo_path = os.path.join(
+            settings.BASE_DIR, 'authentication/test_media/test.jpg')
+        self.user = {
+            'username': 'test_username',
+            'first_name': 'test_first_name',
+            'last_name': 'test_last_name',
+            'email': 'test@test.pl',
+            'password1': 'TestPassword123!$',
+            'password2': 'TestPassword123!$',
+        }
 
+    def test_user_can_view_page(self):
+        response = self.client.get(self.register_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'register.html')
+
+    def test_user_form(self):
+        form = RegisterForm(self.user)
+        self.assertTrue(form.is_valid)
+
+    def test_profile_form(self):
+        with open(self.file_photo_path, 'rb') as f:
+            data = {
+                'user': self.user,
+                'profile_pic': SimpleUploadedFile('test.jpg', f.read())
+            }
+            form = ProfileForm(data)
+            self.assertTrue(form.is_valid)

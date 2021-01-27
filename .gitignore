@@ -1,6 +1,8 @@
 .vscode
 *.pyc
 
+.idea
+
 /music_karaoke/htmlcov
 /music_karaoke/.coverage
 

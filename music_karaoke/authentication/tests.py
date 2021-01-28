@@ -38,3 +38,17 @@ class UserTestCase(TestCase):
             }
             form = ProfileForm(data)
             self.assertTrue(form.is_valid)
+    
+    def test_register_POST_not_valid(self):
+        response = self.client.post(self.register_url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_register_user_authenticated(self):
+        super_user = User.objects.create_superuser(
+            username="admin",
+            password="admin",
+            email="admin@example.com")
+        self.client.force_login(super_user)
+        response = self.client.get(self.register_url)
+        self.assertEqual(response.status_code, 302)
+

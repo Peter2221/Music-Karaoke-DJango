@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import SongForm
 from .models import Song
+from authentication.models import UserFavouriteSong
 
 def landing(request):
     return render(request, 'landing-page/landing.html')

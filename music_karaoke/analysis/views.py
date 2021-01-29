@@ -57,11 +57,6 @@ class VoiceAnalyzer:
             freq2 = freq2[0:len(freq)]
         return freq, freq2
 
-    def log_frequencies(self, freq, freq2):
-        freq = np.log(freq)
-        freq2 = np.log(freq2)
-        return freq, freq2
-
 
 class VoiceScoreCalculator:
     def __init__(self):
@@ -114,13 +109,12 @@ class VoiceScoreCalculator:
         mse = self.get_mse(path1, path2)
         # print("MSE: " + str(mse))
         # Apply function, else return big number
-        # if(50000 > mse >= 0):
-        #     return self.mse_processing_function(mse)
-        # elif(mse >= 50000):
-        #     return 0
-        # else:
-        #     return np.power(10, 6)
-        return mse
+        if(50000 > mse >= 0):
+            return self.mse_processing_function(mse)
+        elif(mse >= 50000):
+            return 0
+        else:
+            return np.power(10, 6)
 
 
 def join_path_with_base_dir(base_dir, filepath):
@@ -141,7 +135,6 @@ def convert_to_wav(filepath):
 @csrf_exempt
 def analysis(request):
     score = 0
-    freqs = 0
     if request.method == "POST":
         audio_track_vocal_path = request.POST.get('audio_file_vocal')
         upload_file = request.FILES.get('audio_file')

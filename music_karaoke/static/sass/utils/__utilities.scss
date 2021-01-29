@@ -37,11 +37,15 @@
   }
 }
 
+.ml-2 {
+  margin-left: 1rem;
+}
+
 .underline {
   &--sec {
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       bottom: 0;

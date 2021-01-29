@@ -1,20 +1,18 @@
 .vscode
 *.pyc
 
+.idea
+
+/music_karaoke/htmlcov
+/music_karaoke/.coverage
+
 # Ignore rec modules
 /rec/node_modules
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/Music-Karaoke-DJango.iml
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/vcs.xml
-/.idea/workspace.xml
-/.env
 
 music_karaoke/media
 
-music_karaoke/music_karaoke/__pycache__
-music_karaoke/authentication/__pycache__
+/music_karaoke/music_karaoke/__pycache__
+/music_karaoke/authentication/__pycache__
 
 **/migrations/
 **/__pycache__/

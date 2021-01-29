@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <h1 class="ranking-title">Ranking</h1>
+  {% if ranking %}
+  <a class="btn-close" href="{% url 'songs:index' %}">
+    <p>X</p>
+  </a>
+  <div class="ranking-container">
+    <ul class="ranking-list">
+      {% for rank in ranking %}
+      <li class="list-item">
+        <h3 class="list-item__count">{{ rank.position_count }}.</h3>
+        <a
+          href="{% url 'songs:index' %}/{{ rank.song.id }}"
+          style="text-decoration: none; color: inherit"
+        >
+          <div class="list-item__author">
+            <img src="../{{ rank.song.song_image }}" alt="song image" />
+            <div>
+              <h4>{{ rank.song.author }}</h4>
+              <span>{{ rank.song.title }}</span>
+            </div>
+          </div>
+        </a>
+        <img src="../{{ rank.profile_pic }}" alt="user avatar" />
+        <div class="ml-2">{{ rank.first_name }} {{ rank.last_name }}</div>
+        <div class="list-item__details">
+          <span>{{ rank.score }}</span>
+          <span>{{ rank.datetime }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {% else %}
+    <p>No data available</p>
+    {% endif %}
+  </div>
+
+  {% endblock %}
+</div>

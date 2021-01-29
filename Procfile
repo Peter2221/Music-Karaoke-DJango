@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath music_karaoke music_karaoke.wsgi
